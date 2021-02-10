@@ -24,7 +24,7 @@ void insert(int newValue,NODE *list){
 //Função de inserção
 
 
-void printList(NODE *list){
+void print(NODE *list){
 	NODE *auxList = list->next;
 	//Pula a cabeça da lista
 	
@@ -37,6 +37,17 @@ void printList(NODE *list){
 	
 }
 
+void delete(NODE *list){
+	NODE *auxList = list->next;
+	//Pula a cabeça da lista
+	list->next = auxList->next;
+	//Define o primeiro item da lista como o segundo item
+	free(auxList);
+	//Deleta o primeiro item da lista da memória
+	
+	
+}
+
 int main(){
 	
 	NODE *initialNode = malloc(sizeof(NODE));
@@ -45,7 +56,8 @@ int main(){
 	insert(10,initialNode);
 	insert(11,initialNode);
 	insert(12,initialNode);
-	printList(initialNode); 
+	delete(initialNode);
+	print(initialNode); 
 	
 	
 	return 1;
